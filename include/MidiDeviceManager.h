@@ -126,6 +126,16 @@ public:
         return message;
     }
 
+    void ClearAllPendingMessages()
+    {
+        m_resourceLock.lock();
+        while( !m_messageQueue.empty() )
+        {
+            m_messageQueue.pop();
+        }
+        m_resourceLock.unlock();
+    }
+
 private:
     inline DeviceID DeviceHandleToID( DeviceHandle inHandle )
     {
