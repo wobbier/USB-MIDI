@@ -136,6 +136,11 @@ public:
         m_resourceLock.unlock();
     }
 
+    bool HasMessages() const
+    {
+        return !m_messageQueue.empty();
+    }
+
 private:
     inline DeviceID DeviceHandleToID( DeviceHandle inHandle )
     {
